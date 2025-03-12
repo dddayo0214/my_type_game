@@ -1,0 +1,198 @@
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #50c878;
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --card-bg: rgba(255, 255, 255, 0.9);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: var(--bg-gradient);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.game-container {
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(10px);
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#target-text {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+#input-text {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    font-size: 1.2rem;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#input-text:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 10px rgba(80, 200, 120, 0.3);
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.stat-box {
+    background: linear-gradient(to right, #4a90e2, #50c878);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    flex-grow: 1;
+    margin: 0 5px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#highlight {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    min-height: 30px;
+}
+
+.correct {
+    color: var(--secondary-color);
+    animation: bounce 0.3s ease;
+}
+
+.incorrect {
+    color: #ff6b6b;
+    text-decoration: underline wavy;
+    animation: shake 0.5s ease;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-5px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(5px);
+    }
+}
+
+#result {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#error-log {
+    background-color: rgba(255, 100, 100, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 15px;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.game-particles {
+    position: absolute;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes particle-float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+    }
+}
+
+.start-hint {
+    color: var(--primary-color);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
