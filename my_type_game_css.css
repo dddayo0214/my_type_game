@@ -26,9 +26,11 @@ body {
     background: var(--card-bg);
     border-radius: 20px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    padding: 30px;
-    width: 100%;
+    padding: 2rem;
+    width: 90%;
     max-width: 500px;
+    min-width: 300px;
+    margin: 1rem;
     text-align: center;
     position: relative;
     backdrop-filter: blur(10px);
@@ -49,28 +51,30 @@ body {
 
 h1 {
     color: var(--primary-color);
-    margin-bottom: 20px;
-    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #target-text {
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 4vw, 1.5rem);
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
     background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bold;
+    line-height: 1.5;
 }
 
 #input-text {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
     border: 2px solid var(--primary-color);
     border-radius: 10px;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 4vw, 1.2rem);
     outline: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -82,25 +86,29 @@ h1 {
 
 .stats-container {
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1.5rem;
 }
 
 .stat-box {
     background: linear-gradient(to right, #4a90e2, #50c878);
     color: white;
-    padding: 10px;
+    padding: 0.8rem;
     border-radius: 10px;
-    flex-grow: 1;
-    margin: 0 5px;
+    flex: 1 1 30%;
+    min-width: 120px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin: 0.2rem;
 }
 
 #highlight {
-    margin-top: 10px;
-    font-size: 1.2rem;
-    min-height: 30px;
+    margin-top: 0.8rem;
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    min-height: 2rem;
+    line-height: 1.5;
 }
 
 .correct {
@@ -150,49 +158,40 @@ h1 {
 }
 
 #result {
-    margin-top: 15px;
-    font-size: 1.2rem;
+    margin-top: 1rem;
+    font-size: clamp(1rem, 4vw, 1.2rem);
     font-weight: bold;
 }
 
 #error-log {
     background-color: rgba(255, 100, 100, 0.1);
     border-radius: 10px;
-    padding: 10px;
-    margin-top: 15px;
+    padding: 0.8rem;
+    margin-top: 1rem;
     max-height: 100px;
     overflow-y: auto;
+    font-size: 0.9rem;
 }
 
-.game-particles {
-    position: absolute;
-    pointer-events: none;
-    z-index: -1;
-}
-
-@keyframes particle-float {
-    0% {
-        transform: translateY(0) rotate(0deg);
+/* Media Queries */
+@media (max-width: 480px) {
+    .game-container {
+        padding: 1.5rem;
     }
 
-    100% {
-        transform: translateY(-100vh) rotate(360deg);
+    .stat-box {
+        flex: 1 1 45%;
+        min-width: 100px;
     }
 }
 
-.start-hint {
-    color: var(--primary-color);
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-
-    0%,
-    100% {
-        opacity: 1;
+@media (max-width: 360px) {
+    .game-container {
+        padding: 1rem;
     }
 
-    50% {
-        opacity: 0.5;
+    .stat-box {
+        flex: 1 1 100%;
+        margin: 0.2rem 0;
     }
 }
